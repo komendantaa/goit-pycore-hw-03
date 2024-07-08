@@ -1,8 +1,10 @@
 import re
 
+
 def normalize_phone(phone_number: str) -> str:
-    pattern = r"(\+?38|[\D])"
-    phone = re.sub(pattern, '', phone_number)
+    pattern = r"(^\D*\+?38|[\D])"
+    phone = re.sub(pattern, "", phone_number)
+    print(f"+38{phone}")
     return f"+38{phone}"
 
 
@@ -15,8 +17,8 @@ raw_numbers = [
     "     0503451234",
     "(050)8889900",
     "38050-111-22-22",
-    "38050 111 22 11   ",
+    "38050 111 38 11   ",
 ]
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
-print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
+# print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
